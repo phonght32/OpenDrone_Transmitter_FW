@@ -56,7 +56,7 @@ err_code_t OpenDrone_Transmitter_Main(void)
 	/* Task 50 Hz */
 	if ((current_time - last_time_us[IDX_TASK_50_HZ]) > FREQ_50_HZ_TIME_US)
 	{
-		PeriphSensor_GetJoystickScale(&periph_operator_data);
+		PeriphSensor_GetJoystickData(&periph_operator_data);
 
 		OpenDrone_Transmitter_PrepareMessageControl();
 		OpenDrone_Transmitter_SendMessageControl();
