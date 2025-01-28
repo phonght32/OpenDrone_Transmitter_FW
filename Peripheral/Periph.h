@@ -30,22 +30,22 @@ extern "C" {
 #include "err_code.h"
 
 typedef struct {
-	uint16_t left_joystick_x;
-	uint16_t left_joystick_y;
-	uint16_t right_joystick_x;
-	uint16_t right_joystick_y;
+	int16_t left_joystick_x;
+	int16_t left_joystick_y;
+	int16_t right_joystick_x;
+	int16_t right_joystick_y;
 } periph_operator_data_t;
 
 err_code_t PeriphSensor_Init(void);
-err_code_t PeriphSensor_GetJoystickScale(periph_operator_data_t *data);
+err_code_t PeriphSensor_GetJoystickData(periph_operator_data_t *data);
 
 err_code_t PeriphRadio_Init(void);
 err_code_t PeriphRadio_Send(uint8_t *data);
 err_code_t PeriphRadio_ClearTransmitIrqFlags(void);
 
 err_code_t PeriphDisplay_Init(void);
-err_code_t PeriphDisplay_ShowJoystickData(uint16_t left_joystick_x, uint16_t left_joystick_y, uint16_t right_joystick_x, uint16_t right_joystick_y);
-err_code_t PeriphDisplay_ShowStabilizerMessage(uint8_t throttle, uint8_t roll, uint8_t pitch, uint8_t yaw);
+err_code_t PeriphDisplay_ShowJoystickData(int16_t left_joystick_x, int16_t left_joystick_y, int16_t right_joystick_x, int16_t right_joystick_y);
+err_code_t PeriphDisplay_ShowStabilizerMessage(int16_t throttle, int16_t roll, int16_t pitch, int16_t yaw);
 
 
 #ifdef __cplusplus
