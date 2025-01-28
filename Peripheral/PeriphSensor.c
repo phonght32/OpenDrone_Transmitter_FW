@@ -60,7 +60,7 @@ err_code_t PeriphSensor_GetJoystickData(periph_operator_data_t *data)
 	int64_t sum_right_joystick_x = 0, sum_right_joystick_y = 0;
 	int64_t left_joystick_x = 0, left_joystick_y = 0;
 	int64_t right_joystick_x = 0, right_joystick_y = 0;
-	uint8_t num_conversion = 10;
+	uint8_t num_conversion = 20;
 	int16_t temp_data = 0;
 	uint8_t i = 0;
 
