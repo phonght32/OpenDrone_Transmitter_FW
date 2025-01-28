@@ -31,18 +31,18 @@ err_code_t PeriphDisplay_Init(void)
 	return ERR_CODE_SUCCESS;
 }
 
-err_code_t PeriphDisplay_ShowJoystickData(uint16_t left_joystick_x, uint16_t left_joystick_y, uint16_t right_joystick_x, uint16_t right_joystick_y)
+err_code_t PeriphDisplay_ShowJoystickData(int16_t left_joystick_x, int16_t left_joystick_y, int16_t right_joystick_x, int16_t right_joystick_y)
 {
 #ifdef USE_HD44780_2004
 	uint8_t row_data[20];
 
 	hd44780_clear(hd44780_handle);
 
-	sprintf((char *)row_data, "X: %04d Y: %04d", left_joystick_x, left_joystick_y);
+	sprintf((char *)row_data, "X: %i Y: %i", left_joystick_x, left_joystick_y);
 	hd44780_gotoxy(hd44780_handle, 0, 0);
 	hd44780_write_string(hd44780_handle, (uint8_t *)row_data);
 
-	sprintf((char *)row_data, "X: %04d Y: %04d", right_joystick_x, right_joystick_y);
+	sprintf((char *)row_data, "X: %i Y: %0i", right_joystick_x, right_joystick_y);
 	hd44780_gotoxy(hd44780_handle, 1, 0);
 	hd44780_write_string(hd44780_handle, (uint8_t *)row_data);
 #endif
@@ -50,7 +50,7 @@ err_code_t PeriphDisplay_ShowJoystickData(uint16_t left_joystick_x, uint16_t lef
 	return ERR_CODE_SUCCESS;
 }
 
-err_code_t PeriphDisplay_ShowStabilizerMessage(uint8_t throttle, uint8_t roll, uint8_t pitch, uint8_t yaw)
+err_code_t PeriphDisplay_ShowStabilizerMessage(int16_t throttle, int16_t roll, int16_t pitch, int16_t yaw)
 {
 #ifdef USE_HD44780_2004
 	uint8_t row0_data[20];
@@ -60,10 +60,10 @@ err_code_t PeriphDisplay_ShowStabilizerMessage(uint8_t throttle, uint8_t roll, u
 
 	hd44780_clear(hd44780_handle);
 
-	sprintf((char *)row0_data, "throttle: %03d", throttle);
-	sprintf((char *)row1_data, "roll    : %03d", roll);
-	sprintf((char *)row2_data, "pitch   : %03d", pitch);
-	sprintf((char *)row3_data, "yaw     : %03d", yaw);
+	sprintf((char *)row0_data, "throttle: %05.4i", throttle);
+	sprintf((char *)row1_data, "roll    : %05.4i", roll);
+	sprintf((char *)row2_data, "pitch   : %05.4i", pitch);
+	sprintf((char *)row3_data, "yaw     : %05.4i", yaw);
 
 	hd44780_gotoxy(hd44780_handle, 0, 0);
 	hd44780_write_string(hd44780_handle, (uint8_t *)row0_data);
