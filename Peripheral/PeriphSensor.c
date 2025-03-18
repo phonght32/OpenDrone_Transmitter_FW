@@ -5,11 +5,6 @@
 
 #ifdef USE_JOYSTICK_MODULE
 
-#define JOYSTICK_IDLE_VALUE 		(4096/2)
-#define JOYSTICK_MAX_VALUE 			4000
-#define JOYSTICK_MIN_VALUE 			100
-#define JOYSTICK_FULL_SCALE			4096
-
 joystick_handle_t left_joystick_handle, right_joystick_handle;
 #endif
 
@@ -21,12 +16,12 @@ err_code_t PeriphSensor_Init(void)
 		.min_acceptable_raw_x 	= 500,
 		.max_acceptable_raw_x 	= 2508,
 		.min_scale_x 			= 0,
-		.max_scale_x 			= 100,
+		.max_scale_x 			= 1000,
 		.inverse_x 				= 0,
-		.min_acceptable_raw_y 	= 1050,
+		.min_acceptable_raw_y 	= 1090,
 		.max_acceptable_raw_y 	= 2790,
-		.min_scale_y 			= 0,
-		.max_scale_y 			= 100,
+		.min_scale_y 			= 48,
+		.max_scale_y 			= 2048,
 		.inverse_y 				= 1,
 		.get_pos_x 				= hw_intf_left_joystick_get_pos_x,
 		.get_pos_y 				= hw_intf_left_joystick_get_pos_y,
@@ -40,12 +35,12 @@ err_code_t PeriphSensor_Init(void)
 		.min_acceptable_raw_x 	= 1568,
 		.max_acceptable_raw_x 	= 3510,
 		.min_scale_x 			= 0,
-		.max_scale_x 			= 100,
+		.max_scale_x 			= 1000,
 		.inverse_x 				= 1,
 		.min_acceptable_raw_y 	= 1270,
 		.max_acceptable_raw_y 	= 2790,
 		.min_scale_y 			= 0,
-		.max_scale_y 			= 100,
+		.max_scale_y 			= 1000,
 		.inverse_y 				= 0,
 		.get_pos_x 				= hw_intf_right_joystick_get_pos_x,
 		.get_pos_y 				= hw_intf_right_joystick_get_pos_y,
